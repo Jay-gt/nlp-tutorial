@@ -25,7 +25,7 @@ class Word2Vec(nn.Module):
         self.W = nn.Linear(voc_size, embedding_size, bias=False) # voc_size > embedding_size Weight 定义一个线性变换操作
         self.WT = nn.Linear(embedding_size, voc_size, bias=False) # embedding_size > voc_size Weight 定义一个线性变换操作
 
-    def forward(self, X): # 前向传播过程
+    def forward(self, X): # 前向传播过程，注：不含softmax层
         # X : [batch_size, voc_size]
         hidden_layer = self.W(X) # hidden_layer : [batch_size, embedding_size] # 对输入层作线性变换得到隐藏层
         output_layer = self.WT(hidden_layer) # output_layer : [batch_size, voc_size] # 对隐藏层作线性变换得到输出层
